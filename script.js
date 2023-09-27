@@ -42,24 +42,33 @@ const generatePassword = () => {
     );
   }
 
-   let passwordSelections = [];
-   if (isLetterUpperCase) passwordSelections.push(upperCase);
-   if (isLetterLowerCase) passwordSelections.push(lowerCase);
-   if (isNumber) passwordSelections.push(numbers);
-   if (isSpecialChars) passwordSelections.push(symbols);
+  let passwordSelections = [];
+  if (isLetterUpperCase) passwordSelections.push(upperCase);
+  if (isLetterLowerCase) passwordSelections.push(lowerCase);
+  if (isNumber) passwordSelections.push(numbers);
+  if (isSpecialChars) passwordSelections.push(symbols);
 
-   let newPassword = [];
+  let newPassword = [];
 
-   // Ensure at least one character of each selected type
-   for (let i = 0; i < passwordSelections.length; i++) {
-     newPassword.push(
-       passwordSelections[i][
-         Math.floor(Math.random() * passwordSelections[i].length)
-       ]
-     );
-   }
+  // Ensure at least one character of each selected type
+  for (let i = 0; i < passwordSelections.length; i++) {
+    newPassword.push(
+      passwordSelections[i][
+        Math.floor(Math.random() * passwordSelections[i].length)
+      ]
+    );
+  }
 
-   return newPassword.join("");
+  // Fill the remaining characters
+  for (let i = newPassword.length; i < passwordLength; i++) {
+    let randomSelection =
+      passwordSelections[Math.floor(Math.random() * passwordSelections.length)];
+    let randomSymbol =
+      randomSelection[Math.floor(Math.random() * randomSelection.length)];
+    newPassword.push(randomSymbol);
+  }
+
+  return newPassword.join("");
 };
 
 // Write password to the #password input
