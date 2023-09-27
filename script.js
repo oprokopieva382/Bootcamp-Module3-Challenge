@@ -10,6 +10,28 @@ const upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 const numbers = "0123456789";
 const symbols = "!@#$%^&*()_+~`|}{[]:;?><,./-=";
 
+// Function to generate a random character from a given character set
+const generatePassword = () => {
+  const passwordLength = parseInt(prompt("Please, choose the # between 8-128"));
+  // Check if the entered password length is valid
+  if (passwordLength < 8 || passwordLength > 128 || isNaN(passwordLength)) {
+    alert("Please, pick the number between 8-128");
+    return "";
+  }
+
+  const isLetterUpperCase = confirm(
+    "Do you want your password to have UpperCase letter?"
+  );
+  const isLetterLowerCase = confirm(
+    "Do you want your password to have LowerCase letter?"
+  );
+  const isNumber = confirm("Do you want your password to have numbers?");
+  const isSpecialChars = confirm(
+    "Do you want your password to have special chars?"
+  );
+
+  
+};
 
 // Write password to the #password input
 function writePassword() {
