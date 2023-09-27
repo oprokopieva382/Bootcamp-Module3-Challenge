@@ -41,6 +41,25 @@ const generatePassword = () => {
       "At least one character type you must select, for me to generate password for you!"
     );
   }
+
+   let passwordSelections = [];
+   if (isLetterUpperCase) passwordSelections.push(upperCase);
+   if (isLetterLowerCase) passwordSelections.push(lowerCase);
+   if (isNumber) passwordSelections.push(numbers);
+   if (isSpecialChars) passwordSelections.push(symbols);
+
+   let newPassword = [];
+
+   // Ensure at least one character of each selected type
+   for (let i = 0; i < passwordSelections.length; i++) {
+     newPassword.push(
+       passwordSelections[i][
+         Math.floor(Math.random() * passwordSelections[i].length)
+       ]
+     );
+   }
+
+   return newPassword.join("");
 };
 
 // Write password to the #password input
