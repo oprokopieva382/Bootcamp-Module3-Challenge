@@ -4,30 +4,32 @@ const generateBtn = document.querySelector("#generate");
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
-// Define character sets for password generation
+// Define character selections for password generation
 const lowerCase = "abcdefghijklmnopqrstuvwxyz";
 const upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 const numbers = "0123456789";
 const symbols = "!@#$%^&*()_+~`|}{[]:;?><,./-=";
 
-// Function to generate a random character from a given character set
+// Function to generate a random character from a given character selection
 const generatePassword = () => {
-  const passwordLength = parseInt(prompt("Please, choose the # between 8-128"));
+  const passwordLength = parseInt(
+    prompt("Please, choose the # between 8-128❗")
+  );
   // Check if the entered password length is valid
   if (passwordLength < 8 || passwordLength > 128 || isNaN(passwordLength)) {
-    alert("Please, pick the number between 8-128");
+    alert("⚠️Please, pick the number between 8-128");
     return "";
   }
 
   const isLetterUpperCase = confirm(
-    "Do you want your password to have UpperCase letter?"
+    "Do you want your password to have UpperCase letter❓"
   );
   const isLetterLowerCase = confirm(
-    "Do you want your password to have LowerCase letter?"
+    "Do you want your password to have LowerCase letter❓"
   );
-  const isNumber = confirm("Do you want your password to have numbers?");
+  const isNumber = confirm("Do you want your password to have numbers❓");
   const isSpecialChars = confirm(
-    "Do you want your password to have special chars?"
+    "Do you want your password to have special chars❓"
   );
 
   // Validate that at least one character type is selected
@@ -38,7 +40,7 @@ const generatePassword = () => {
     !isSpecialChars
   ) {
     alert(
-      "At least one character type you must select, for me to generate password for you!"
+      "At least one character type must be selected, for me to generate password for you❗"
     );
   }
 
