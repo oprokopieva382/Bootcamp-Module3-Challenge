@@ -30,7 +30,17 @@ const generatePassword = () => {
     "Do you want your password to have special chars?"
   );
 
-  
+  // Validate that at least one character type is selected
+  if (
+    !isLetterUpperCase &&
+    !isLetterLowerCase &&
+    !isNumber &&
+    !isSpecialChars
+  ) {
+    alert(
+      "At least one character type you must select, for me to generate password for you!"
+    );
+  }
 };
 
 // Write password to the #password input
