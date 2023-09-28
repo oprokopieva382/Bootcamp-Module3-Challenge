@@ -10,6 +10,14 @@ const upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 const numbers = "0123456789";
 const symbols = "!@#$%^&*()_+~`|}{[]:;?><,./-=";
 
+// Write password to the #password input
+function writePassword() {
+  let password = generatePassword();
+  let passwordText = document.querySelector("#password");
+
+  passwordText.value = password;
+}
+
 // Function to generate a random character from a given character selection
 const generatePassword = () => {
   const passwordLength = parseInt(
@@ -45,10 +53,10 @@ const generatePassword = () => {
   }
 
   let passwordSelections = [];
-  if (isLetterUpperCase) passwordSelections.push(upperCase);
-  if (isLetterLowerCase) passwordSelections.push(lowerCase);
-  if (isNumber) passwordSelections.push(numbers);
-  if (isSpecialChars) passwordSelections.push(symbols);
+  isLetterUpperCase && passwordSelections.push(upperCase);
+  isLetterLowerCase && passwordSelections.push(lowerCase);
+  isNumber && passwordSelections.push(numbers);
+  isSpecialChars && passwordSelections.push(symbols);
 
   let newPassword = [];
 
@@ -72,11 +80,3 @@ const generatePassword = () => {
 
   return newPassword.join("");
 };
-
-// Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-
-  passwordText.value = password;
-}
